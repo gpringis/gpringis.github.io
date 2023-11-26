@@ -3,6 +3,10 @@ body {
     color: #fff;
     font-family: "Lato", sans-serif;
   }
+
+  .ar-object.active {
+    transform: scale(2);
+  }
   
   .sidenav {
     height: 100%;
