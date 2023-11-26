@@ -58,6 +58,10 @@
 			init();
 			animate();
 
+			$(document).ready(function() {
+    				loadModel('1');
+  			});
+
 			$(".ar-object").click(function(){
 				if(current_object != null){
 					scene.remove(current_object);
