@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title>three.js ar - hit test</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<link type="text/css" rel="stylesheet" href="main.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div id="content">
 
+		<div id="content">
 			<div id="mySidenav" class="sidenav">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 				<a class="ar-object" id="1" href="#">item_1</a>
@@ -16,12 +17,11 @@
 				<a class="ar-object" id="3" href="#">item_3</a>
 				<a class="ar-object" id="4" href="#">item_4</a>
 			</div>
-
+	
 			<div id="container" style="position: fixed;"></div>
-
-
+			  
 			<span style="font-size:30px;cursor:pointer;position: absolute;" onclick="openNav()">&#9776; open</span>
-
+		
 			<button type="button" id="place-button">PLACE</button>
 		</div>
 
@@ -29,7 +29,7 @@
 			function openNav() {
 			  document.getElementById("mySidenav").style.width = "250px";
 			}
-
+			
 			function closeNav() {
 			  document.getElementById("mySidenav").style.width = "0";
 			}
@@ -54,55 +54,6 @@
 
 			var hitTestSource = null;
 			var hitTestSourceRequested = false;
-
-			// Initialize joystick values
-			let fwdValue = 0;
-			let bkdValue = 0;
-			let lftValue = 0;
-			let rgtValue = 0;
-
-// Create joystick
-			const options = {
-				zone: document.getElementById('joystickWrapper1'),
-				size: 120,
-				multitouch: true,
-				maxNumberOfNipples: 2,
-				mode: 'static',
-				restJoystick: true,
-				shape: 'circle',
-				position: { top: '60px', left: '60px' },
-				dynamicPage: true
-			};
-
-			joyManager = nipplejs.create(options);
-
-			joyManager['0'].on('move', function (evt, data) {
-				const forward = data.vector.y;
-				const turn = data.vector.x;
-
-				if (forward > 0) {
-					fwdValue = Math.abs(forward);
-					bkdValue = 0;
-				} else if (forward < 0) {
-					fwdValue = 0;
-					bkdValue = Math.abs(forward);
-				}
-
-				if (turn > 0) {
-					lftValue = 0;
-					rgtValue = Math.abs(turn);
-				} else if (turn < 0) {
-					lftValue = Math.abs(turn);
-					rgtValue = 0;
-				}
-			});
-
-			joyManager['0'].on('end', function (evt) {
-				bkdValue = 0;
-				fwdValue = 0;
-				lftValue = 0;
-				rgtValue = 0;
-			});
 
 			init();
 			animate();
@@ -141,7 +92,7 @@
 			}
 
 			function loadModel(model){
-
+				
 				new RGBELoader()
 					.setDataType(THREE.UnsignedByteType)
 					.setPath('textures/')
@@ -183,7 +134,7 @@
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
 
 				var directionalLight = new THREE.DirectionalLight(0xdddddd, 1);
-				directionalLight.position.set(0, 5, 0).normalize();
+				directionalLight.position.set(0, 0, 1).normalize();
 				scene.add(directionalLight);
 
 				var ambientLight = new THREE.AmbientLight(0x222222);
@@ -252,7 +203,7 @@
 
 				renderer.domElement.addEventListener('touchmove', function(e){
 					e.preventDefault();
-
+					
 					if(!touchDown){
 						return;
 					}
