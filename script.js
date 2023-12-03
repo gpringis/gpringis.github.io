@@ -55,10 +55,10 @@ function arPlace(){
 }
 
 function justForce(){
-    if(current_object != null){
-    scene.remove(current_object);
-    }
-    loadModel('1');
+    //if(current_object != null){
+    //scene.remove(current_object);
+    //}
+    //loadModel('1');
     //current_object.position(1, 0, -2);
     current_object.visible = true;
 }
@@ -106,11 +106,11 @@ function init() {
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
 
     var directionalLight = new THREE.DirectionalLight(0xdddddd, 1);
-    directionalLight.position.set(0, 0, 1).normalize();
+    directionalLight.position.set(0, 10, 0).normalize();
     scene.add(directionalLight);
 
-    var ambientLight = new THREE.AmbientLight(0x222222);
-    scene.add(ambientLight);
+    //var ambientLight = new THREE.AmbientLight(0x222222);
+    //scene.add(ambientLight);
 
 				//
 
