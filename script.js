@@ -16,20 +16,20 @@ var reticle, pmremGenerator, current_object, controls, isAR, envmap;
 var hitTestSource = null;
 var hitTestSourceRequested = false;
 
+document.getElementById("menu").style.display = "none";
+
 init();
 animate();
 
 $(document).ready(function() {
     loadModel('1');
 });
-document.getElementById("menu").style.display = "none";
 
 $(".ar-object").click(function(){
     if(current_object != null){
         scene.remove(current_object);
     }
-
-    loadModel($(this).attr("id"));
+    justForce()
 });
 
 $("#ARButton").click(function(){
@@ -50,6 +50,13 @@ $("#place-button").click(function(){
 function arPlace(){
     if ( reticle.visible ) {
         current_object.position.setFromMatrixPosition(reticle.matrix);
+        current_object.visible = true;
+    }
+}
+
+function justForce(){
+    if ( reticle.visible ) {
+        current_object.position.y=4
         current_object.visible = true;
     }
 }
