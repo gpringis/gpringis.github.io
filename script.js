@@ -55,8 +55,10 @@ function arPlace(){
 }
 
 function justForce(){
-    //current_object.position(1, 0, -2);
+    current_object.position(1, 0, -2);
     current_object.visible = true;
+    controls.update();
+    render();
 }
 
 function loadModel(model){
