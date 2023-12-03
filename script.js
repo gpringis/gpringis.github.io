@@ -56,7 +56,7 @@ function arPlace(){
 
 function justForce(){
     if ( reticle.visible ) {
-        current_object.position.y=4
+        current_object.position(1, 0, -2);
         current_object.visible = true;
     }
 }
