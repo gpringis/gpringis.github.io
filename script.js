@@ -19,7 +19,6 @@ var reticle, pmremGenerator, current_object, controls, isAR, envmap;
 var hitTestSource = null;
 var hitTestSourceRequested = false;
 
-
 init();
 animate();
 
@@ -296,5 +295,3 @@ function render( timestamp, frame ) {
     renderer.render( scene, camera );
 
 }
-
-
