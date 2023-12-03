@@ -29,8 +29,7 @@ $(".ar-object").click(function(){
     if(current_object != null){
         scene.remove(current_object);
     }
-    loadModel('1');
-    arPlace();
+    justForce()
 });
 
 $("#ARButton").click(function(){
@@ -53,6 +52,15 @@ function arPlace(){
         current_object.position.setFromMatrixPosition(reticle.matrix);
         current_object.visible = true;
     }
+}
+
+function justForce(){
+    if(current_object != null){
+    scene.remove(current_object);
+    }
+    loadModel('1');
+    //current_object.position(1, 0, -2);
+    current_object.visible = true;
 }
 
 function loadModel(model){
@@ -278,5 +286,3 @@ function render( timestamp, frame ) {
     renderer.render( scene, camera );
 
 }
-
-
