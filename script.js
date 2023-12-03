@@ -29,6 +29,7 @@ $(".ar-object").click(function(){
     if(current_object != null){
         scene.remove(current_object);
     }
+    loadModel('1');
     arPlace();
 });
 
