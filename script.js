@@ -55,11 +55,8 @@ function arPlace(){
 }
 
 function justForce(){
-    if ( reticle.visible ) {
-        loadModel('1');
-        current_object.position(1, 0, -2);
-        current_object.visible = true;
-    }
+    current_object.position(1, 0, -2);
+    current_object.visible = true;
 }
 
 function loadModel(model){
