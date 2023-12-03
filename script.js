@@ -19,7 +19,6 @@ var reticle, pmremGenerator, current_object, controls, isAR, envmap;
 var hitTestSource = null;
 var hitTestSourceRequested = false;
 
-document.getElementById("menu").style.display = "none";
 
 init();
 animate();
@@ -37,7 +36,6 @@ $(".ar-object").click(function(){
 
 $("#ARButton").click(function(){
     current_object.visible = false;
-    document.getElementById("menu").style.display = "block";
     isAR = true;
 });
 
