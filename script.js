@@ -55,11 +55,11 @@ function arPlace(){
 }
 
 function justForce(){
-    //if(current_object != null){
-    //scene.remove(current_object);
-    //}
-    //loadModel('1');
-    //current_object.position(1, 0, -2);
+    if(current_object != null){
+    scene.remove(current_object);
+    }
+    loadModel('1');
+    current_object.position(1, 0, -2);
     current_object.visible = true;
 }
 
