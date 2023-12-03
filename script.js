@@ -7,6 +7,9 @@ import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from './jsm/loaders/RGBELoader.js';
 import { RoughnessMipmapper } from './jsm/utils/RoughnessMipmapper.js';
 
+
+
+
 var container;
 var camera, scene, renderer;
 var controller;
@@ -29,7 +32,7 @@ $(".ar-object").click(function(){
     if(current_object != null){
         scene.remove(current_object);
     }
-    justForce()
+    justForce();
 });
 
 $("#ARButton").click(function(){
@@ -47,6 +50,10 @@ $("#place-button").click(function(){
     arPlace();
 });
 
+$("#force-button").click(function(){
+    justForce();
+});
+
 function arPlace(){
     if ( reticle.visible ) {
         current_object.position.setFromMatrixPosition(reticle.matrix);
@@ -59,7 +66,9 @@ function justForce(){
     scene.remove(current_object);
     }
     loadModel('1');
-    current_object.position(1, 0, -2);
+    current_object.position.copy( camera.position );
+    current_object.rotation.copy( camera.rotation );
+    current_object.updateMatrix();
     current_object.visible = true;
 }
 
@@ -106,11 +115,11 @@ function init() {
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
 
     var directionalLight = new THREE.DirectionalLight(0xdddddd, 1);
-    directionalLight.position.set(0, 10, 0).normalize();
+    directionalLight.position.set(0, 5, 0).normalize();
     scene.add(directionalLight);
 
-    //var ambientLight = new THREE.AmbientLight(0x222222);
-    //scene.add(ambientLight);
+    var ambientLight = new THREE.AmbientLight(0x222222);
+    scene.add(ambientLight);
 
 				//
 
@@ -251,6 +260,7 @@ function render( timestamp, frame ) {
                 box.center(controls.target);
 
                 document.getElementById("place-button").style.display = "none";
+                document.getElementById("place-button").style.display = "none";
 
             } );
 
@@ -267,6 +277,7 @@ function render( timestamp, frame ) {
                 var hit = hitTestResults[ 0 ];
 
                 document.getElementById("place-button").style.display = "block";
+                document.getElementById("force-button").style.display = "none";
 
                 reticle.visible = true;
                 reticle.matrix.fromArray( hit.getPose( referenceSpace ).transform.matrix );
@@ -276,6 +287,7 @@ function render( timestamp, frame ) {
                 reticle.visible = false;
 
                 document.getElementById("place-button").style.display = "none";
+                document.getElementById("force-button").style.display = "block";
 
             }
 
@@ -286,3 +298,5 @@ function render( timestamp, frame ) {
     renderer.render( scene, camera );
 
 }
+
+
