@@ -26,13 +26,6 @@ $(document).ready(function() {
     loadModel('1');
 });
 
-$(".ar-object").click(function(){
-    if(current_object != null){
-        scene.remove(current_object);
-    }
-    justForce();
-});
-
 $("#ARButton").click(function(){
     current_object.visible = false;
     isAR = true;
