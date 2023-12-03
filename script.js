@@ -34,7 +34,7 @@ $(".ar-object").click(function(){
 
 $("#ARButton").click(function(){
     current_object.visible = false;
-    document.getElementById("place-button").style.display = "block";
+    document.getElementById("menu").style.display = "block";
     isAR = true;
 });
 
