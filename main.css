@@ -53,6 +53,7 @@ body {
     left: calc(50% - 50px);
     width: 100px;
     height: 35px;
+    color: #A9DFBF;
     display: none;
   }
 
@@ -62,6 +63,7 @@ body {
     left: calc(50% - 50px);
     width: 100px;
     height: 35px;
+    color: ##F1948A;
     display: none;
   }
 
