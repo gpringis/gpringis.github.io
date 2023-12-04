@@ -48,23 +48,32 @@ body {
   }
 
   #place-button{
-    position: absolute;
-    bottom: 20px;
-    left: calc(50% - 50px);
-    width: 100px;
-    height: 35px;
-    color: #A9DFBF;
-    display: none;
+    background-color: #3e8e41;
   }
 
     #force-button{
+    background-color: #E74C3C;
+  }
+
+    .button {
     position: absolute;
     bottom: 20px;
     left: calc(50% - 50px);
     width: 100px;
     height: 35px;
-    color: ##F1948A;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    box-shadow: 0 9px #999;
+    border-radius: 15px;
     display: none;
+  }
+
+    .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
   }
 
   #VRButton{
